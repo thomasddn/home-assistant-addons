@@ -14,7 +14,8 @@ COPY run.sh /
 # Setup app
 RUN apk update && \
     apk upgrade && \
-    apk add git && \
+    apk add git curl gcc && \
+    curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     git clone https://github.com/thomasddn/qbha /qbha && \
     cd /qbha && \
     git switch --detach $QBHA_VERSION && \
