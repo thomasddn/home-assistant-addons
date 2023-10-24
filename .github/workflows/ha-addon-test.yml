@@ -11,16 +11,6 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v3
         
-      - name: Test build armhf
-        # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
-        uses: home-assistant/builder@2023.09.0
-        with:
-          args: |
-            --test \
-            --armhf \
-            --target qbha \
-            --docker-hub ${{ secrets.DOCKER_USERNAME }}
-        
       - name: Test build armv7
         # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
         uses: home-assistant/builder@2023.09.0
