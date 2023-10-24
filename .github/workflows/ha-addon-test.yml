@@ -1,4 +1,4 @@
-name: Test Home Assistant builder
+name: HA Builder - Test
 
 on:
   workflow_dispatch:
@@ -19,4 +19,14 @@ jobs:
             --test \
             --all \
             --target qbha \
+            --docker-hub ${{ secrets.DOCKER_USERNAME }}
+        
+      - name: Test build
+        # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
+        uses: home-assistant/builder@2023.09.0
+        with:
+          args: |
+            --test \
+            --all \
+            --target qbusmqtt \
             --docker-hub ${{ secrets.DOCKER_USERNAME }}
