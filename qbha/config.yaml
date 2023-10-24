@@ -1,0 +1,24 @@
+name: QBHA
+description: Qbus bridge for Home Assistant
+version: 0.1.0
+image: thomasddn/home-assistant-addon-qbha-{arch}
+slug: qbha
+codenotary: 11554546+thomasddn@users.noreply.github.com
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armv7
+  - i386
+services:
+  - 'mqtt:need'
+options:
+  LOG_LEVEL: INFO
+  QBUS_CAPTURE: false
+schema:
+  MQTT_HOST: str?
+  MQTT_PORT: port?
+  MQTT_USER: str?
+  MQTT_PWD: str?
+  LOG_LEVEL: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)
+  QBUS_CAPTURE: bool
