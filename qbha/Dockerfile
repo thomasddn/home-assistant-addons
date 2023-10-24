@@ -12,9 +12,14 @@ ENV PYTHONUNBUFFERED=1
 COPY run.sh /
 
 # Setup app
+# Somehow, building with home-assistant-builder requires rust to be installed for a 
+# certain python package. This is not the case when building locally. This also 
+# causes the addon to be NOT compatible with armhf, armv7 and i386 architectures.
+# Packages curl and gcc are only added to run the rust installer.
 RUN apk update && \
     apk upgrade && \
-    apk add git curl gcc && \
+    apk add git && \
+    apk add curl gcc && \
     curl https://sh.rustup.rs -sSf | sh -s -- -y && \
     git clone https://github.com/thomasddn/qbha /qbha && \
     cd /qbha && \
