@@ -18,11 +18,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_TOKEN }}
           
-      - name: Push qbha
+      - name: Push qbusmqtt
         # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
         uses: home-assistant/builder@2023.09.0
         with:
           args: |
             --all \
-            --target qbha \
+            --target qbusmqtt \
             --docker-hub ${{ secrets.DOCKER_USERNAME }}

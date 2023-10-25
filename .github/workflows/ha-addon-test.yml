@@ -1,4 +1,4 @@
-name: HA Builder - Test
+name: HA Addon - Test
 
 on:
   workflow_dispatch:
