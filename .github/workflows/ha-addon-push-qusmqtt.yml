@@ -1,4 +1,4 @@
-name: HA Addon - Push qbha
+name: HA Addon - Push qbusmqtt
 
 on:
   workflow_dispatch:
