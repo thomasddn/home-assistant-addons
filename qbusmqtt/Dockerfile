@@ -2,11 +2,11 @@ ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-ubuntu:20.04
 
 FROM $BUILD_FROM
 ARG TARGETARCH
-#ARG BUILD_ARCH=${BUILD_ARCH:-$TARGETARCH}
 ARG QBUSMQTT_VERSION=v0.1.0
 
 # Copy run.sh
 COPY run.sh /
+RUN chmod a+x /run.sh
 
 # Setup app
 RUN apt-get clean && \
@@ -27,7 +27,6 @@ RUN apt-get clean && \
     cp /qbusmqtt/binaries/qbusMqttGw/qbusMqttGw /usr/bin/qbus/ && \
     chmod +x /usr/bin/qbus/qbusMqttGw && \
     chmod +x /opt/qbus/puttftp && \
-    chmod a+x /run.sh && \
     rm -rf /qbusmqtt
 
 # Run
