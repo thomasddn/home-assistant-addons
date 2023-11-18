@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bashio
 
+export IS_HA_ADDON=1
 CONFIG_PATH=/data/options.json
-
 MQTT_HOST=$(bashio::config "MQTT_HOST")
 #echo $(bashio::config "MQTT_HOST")
 
@@ -19,8 +19,10 @@ else
     export MQTT_PWD=$(bashio::config "MQTT_PWD")
 fi
 
-export LOG_LEVEL=$(bashio::config "LOG_LEVEL")
+export CLIMATE_PRESETS=$(bashio::config "CLIMATE_PRESETS")
+export CLIMATE_SENSORS=$(bashio::config "CLIMATE_SENSORS")
 export QBUS_CAPTURE=$(bashio::config "QBUS_CAPTURE")
+export LOG_LEVEL=$(bashio::config "LOG_LEVEL")
 
 # echo $MQTT_HOST
 # echo $MQTT_PORT
@@ -28,5 +30,7 @@ export QBUS_CAPTURE=$(bashio::config "QBUS_CAPTURE")
 # echo $MQTT_PWD
 # echo $LOG_LEVEL
 # echo $QBUS_CAPTURE
+# echo $CLIMATE_SENSORS
+# echo $CLIMATE_PRESETS
 
 python -u /app/main.py

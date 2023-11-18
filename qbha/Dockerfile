@@ -20,7 +20,7 @@ RUN apk update && \
     cd /qbha && \
     git switch --detach $QBHA_VERSION && \
     mkdir /app && \
-    mkdir /data && \
+    mkdir /config && \
     cp /qbha/requirements.txt /app/requirements.txt && \
     python -m pip install -r /app/requirements.txt && \
     cp -R /qbha/src/. /app && \

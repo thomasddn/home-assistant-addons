@@ -10,13 +10,19 @@ arch:
   - amd64
 services:
   - 'mqtt:need'
+map:
+  - addon_config:rw
 options:
-  LOG_LEVEL: INFO
+  CLIMATE_PRESETS: "MANUEEL,VORST,NACHT,ECONOMY,COMFORT"
+  CLIMATE_SENSORS: false
   QBUS_CAPTURE: false
+  LOG_LEVEL: INFO
 schema:
   MQTT_HOST: str?
   MQTT_PORT: port?
   MQTT_USER: str?
   MQTT_PWD: str?
-  LOG_LEVEL: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)
+  CLIMATE_PRESETS: str?
+  CLIMATE_SENSORS: bool
   QBUS_CAPTURE: bool
+  LOG_LEVEL: list(DEBUG|INFO|WARNING|ERROR|CRITICAL)

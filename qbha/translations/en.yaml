@@ -11,9 +11,15 @@ configuration:
   MQTT_PWD:
     name: MQTT Password
     description: The password to connect to the MQTT broker. Leave empty if you want to use the MQTT addon or no credentials required.
-  LOG_LEVEL:
-    name: Log level
-    description: The log level to use.
+  CLIMATE_PRESETS:
+    name: Climate presets
+    description: Comma separated list of climate presets you want to have available in HA. Also useful if your controller is set to another language. Applies to all climate entities.
+  CLIMATE_SENSORS:
+    name: Climate sensors
+    description: Create sensors for all climate entities.
   QBUS_CAPTURE:
     name: Qbus capture
     description: Log all Qbus topic messages to a file, regardless of LOG_LEVEL. Used for debugging purposes.
+  LOG_LEVEL:
+    name: Log level
+    description: The log level to use.
