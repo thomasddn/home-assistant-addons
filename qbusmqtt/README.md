@@ -2,13 +2,18 @@
 
 Exposes states and events of the Qbus Home Automation system to a MQTT broker.
 
-See https://github.com/thomasddn/qbusmqtt for more information.
+It is also available as a Docker container: https://github.com/thomasddn/qbusmqtt.
 
 [![GitHub release (with filter)][releases-shield]][releases]
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports armv7 Architecture][armv7-shield]
 
+## Dependencies
+
+This add-on requires MQTT.
+
 ## Remarks
+
 This is **not** officially supported by Qbus.
 
 

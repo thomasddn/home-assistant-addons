@@ -8,9 +8,10 @@ It is also available as a Docker container: https://github.com/thomasddn/qbha.
 
 ## Dependencies
 
-This add-on requires MQTT and a [Qbus MQTT gateway](https://github.com/thomasddn/qbusmqtt).
+This add-on requires MQTT and a Qbus MQTT gateway ([Docker](https://github.com/thomasddn/qbusmqtt) or [Home Assistant add-on](https://github.com/thomasddn/home-assistant-addons)).
 
 ## Remarks
+
 This is **not** officially supported by Qbus.
 
 
