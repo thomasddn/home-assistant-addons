@@ -11,6 +11,9 @@ configuration:
   MQTT_PWD:
     name: MQTT Password
     description: The password to connect to the MQTT broker. Leave empty if you want to use the MQTT addon or no credentials required.
+  BINARY_SENSORS:
+    name: Binary sensors
+    description: Comma separated list of on/off entities to be created as binary sensors. You can use either the Qbus entity_id, ref_id or name to define an on/off entity.
   CLIMATE_PRESETS:
     name: Climate presets
     description: Comma separated list of climate presets you want to have available in HA. Also useful if your controller is set to another language. Applies to all climate entities.

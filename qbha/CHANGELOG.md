@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 - 2023-12-13
+
+### Added
+
+- Option to create binary sensors for certain switch entities (thomasddn/qbha#3)
+- Informational attributes
+
 ## 0.4.0 - 2023-11-21
 
 ### Added

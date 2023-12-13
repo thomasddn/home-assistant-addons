@@ -19,6 +19,7 @@ else
     export MQTT_PWD=$(bashio::config "MQTT_PWD")
 fi
 
+export BINARY_SENSORS=$(bashio::config "BINARY_SENSORS")
 export CLIMATE_PRESETS=$(bashio::config "CLIMATE_PRESETS")
 export CLIMATE_SENSORS=$(bashio::config "CLIMATE_SENSORS")
 export QBUS_CAPTURE=$(bashio::config "QBUS_CAPTURE")
