@@ -16,6 +16,8 @@ else
     MQTT_PORT=$(bashio::config "MQTT_PORT")
     MQTT_USER=$(bashio::config "MQTT_USER")
     MQTT_PWD=$(bashio::config "MQTT_PWD")
+
+    : "${MQTT_PORT:=1883}"
 fi
 
 # echo $MQTT_HOST

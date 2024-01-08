@@ -2,7 +2,7 @@ ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-ubuntu:20.04
 
 FROM $BUILD_FROM
 ARG TARGETARCH
-ARG QBUSMQTT_VERSION=v0.1.0
+ARG QBUSMQTT_VERSION=v0.2.0
 
 # Copy run.sh
 COPY run.sh /
@@ -13,7 +13,7 @@ RUN apt-get clean && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install libc6 libdbus-1-3 libstdc++6 -y && \
-    apt-get install tftp git unzip arp-scan net-tools -y && \
+    apt-get install tftp git unzip arp-scan net-tools telnet -y && \
     git clone https://github.com/thomasddn/qbusmqtt /qbusmqtt && \
     cd /qbusmqtt && \
     git switch --detach $QBUSMQTT_VERSION && \
