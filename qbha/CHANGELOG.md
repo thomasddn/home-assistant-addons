@@ -1,11 +1,19 @@
 # Changelog
 
+## 0.6.0 - 2024-01-12
+
+### Added
+
+- Support for multiple controllers
+
+
 ## 0.5.0 - 2023-12-13
 
 ### Added
 
 - Option to create binary sensors for certain switch entities (thomasddn/qbha#3)
 - Informational attributes
+
 
 ## 0.4.0 - 2023-11-21
 
