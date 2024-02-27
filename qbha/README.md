@@ -1,10 +1,12 @@
 # QBHA
 QBHA stands for Qbus Bridge for Home Assistant and can be pronounced as "cuba". QBHA will create MQTT topics for Home Assistant based on your Qbus configuration, making all supported entities available in Home Assistant.
 
-It is also available as a Docker container: https://github.com/thomasddn/qbha.
+It is also available as a Docker image: https://github.com/thomasddn/qbha.
 
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports aarch64 Architecture][aarch64-shield]
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7UZ6KN)
 
 ## Dependencies
 

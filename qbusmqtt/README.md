@@ -2,11 +2,13 @@
 
 Exposes states and events of the Qbus Home Automation system to a MQTT broker.
 
-It is also available as a Docker container: https://github.com/thomasddn/qbusmqtt.
+It is also available as a Docker image: https://github.com/thomasddn/qbusmqtt.
 
 [![GitHub release (with filter)][releases-shield]][releases]
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports armv7 Architecture][armv7-shield]
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7UZ6KN)
 
 ## Dependencies
 
