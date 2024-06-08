@@ -1,6 +1,13 @@
 # Changelog
 
-## [0.7.0] - 2024-06-07
+## 0.7.1 - 2024-06-08
+
+### Fixed
+
+- Unsupported variant value type in Qbus configuration (thomasddn/qbha#6)
+
+
+## 0.7.0 - 2024-06-07
 
 ### Added
 
