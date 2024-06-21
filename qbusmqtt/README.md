@@ -4,8 +4,6 @@ Exposes states and events of the Qbus Home Automation system to a MQTT broker.
 
 It is also available as a Docker image: https://github.com/thomasddn/qbusmqtt.
 
-[![GitHub release (with filter)][releases-shield]][releases]
-
 ![Supports armv7 Architecture][armv7-shield]
 ![Supports armhf Architecture][armhf-shield]
 ![Supports aarch64 Architecture][aarch64-shield]
@@ -27,10 +25,8 @@ This add-on requires MQTT.
 This is **not** officially supported by Qbus.
 
 
-[releases-shield]: https://img.shields.io/github/v/release/thomasddn/qbusmqtt
 [armv7-shield]: https://img.shields.io/badge/armv7-yes-green.svg?style=flat-square
 [armhf-shield]: https://img.shields.io/badge/armhf-yes-green.svg?style=flat-square
 [aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg?style=flat-square
 [amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg?style=flat-square
 [i386-shield]: https://img.shields.io/badge/i386-yes-green.svg?style=flat-square
-[releases]: https://github.com/thomasddn/qbusmqtt/releases?style=flat-square

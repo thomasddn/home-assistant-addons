@@ -21,7 +21,5 @@ This add-on requires MQTT and a Qbus MQTT gateway ([Docker](https://github.com/t
 This is **not** officially supported by Qbus.
 
 
-[releases-shield]: https://img.shields.io/github/v/release/thomasddn/qbha
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[releases]: https://github.com/thomasddn/qbha/releases
+[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg?style=flat-square
+[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg?style=flat-square
