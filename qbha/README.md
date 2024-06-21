@@ -6,6 +6,10 @@ It is also available as a Docker image: https://github.com/thomasddn/qbha.
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports aarch64 Architecture][aarch64-shield]
 
+## ❤️ Support this project
+
+If you enjoy this project, consider supporting its development by making a donation. Even a small contribution makes a big difference. Thank you for your support!
+
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7UZ6KN)
 
 ## Dependencies
