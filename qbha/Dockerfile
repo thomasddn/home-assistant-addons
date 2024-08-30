@@ -1,6 +1,6 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-python:3.12-alpine3.18
 FROM $BUILD_FROM
-ARG QBHA_VERSION=v0.7.2
+ARG QBHA_VERSION=v0.7.3
 
 # Keep Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
