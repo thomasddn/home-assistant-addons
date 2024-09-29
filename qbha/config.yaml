@@ -1,6 +1,6 @@
 name: QBHA
 description: Qbus bridge for Home Assistant
-version: 0.7.3
+version: 0.8.0
 image: thomasddn/home-assistant-addon-qbha-{arch}
 slug: qbha
 codenotary: 11554546+thomasddn@users.noreply.github.com

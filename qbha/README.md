@@ -6,17 +6,17 @@ It is also available as a Docker image: https://github.com/thomasddn/qbha.
 ![Supports amd64 Architecture][amd64-shield]
 ![Supports aarch64 Architecture][aarch64-shield]
 
-## ❤️ Support this project
+## 🥤 Snack-fueled coding 
 
-If you enjoy this project, consider supporting its development by making a donation. Even a small contribution makes a big difference. Thank you for your support!
+You know what goes great with open-source coding? Snacks! If my project helped you out, maybe throw a little something my way so my potato chips and Coca-Cola stash doesn't run out!
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/N4N7UZ6KN)
 
-## Dependencies
+## 📦 Dependencies
 
 This add-on requires MQTT and a Qbus MQTT gateway ([Docker](https://github.com/thomasddn/qbusmqtt) or [Home Assistant add-on](https://github.com/thomasddn/home-assistant-addons)).
 
-## Remarks
+## 🗣️ Remarks
 
 This is **not** officially supported by Qbus.
 

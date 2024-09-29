@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.8.0 - 2024-09-29
+
+### Added
+
+- Add support for ventilation CO2 sensor (thomasddn/qbha#9)
+- Make boot order with qbusmqtt irrelevant
+
+
 ## 0.7.3 - 2024-08-30
 
 ### Fixed
