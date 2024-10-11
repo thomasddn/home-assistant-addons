@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.0 - 2024-10-11
+
+### Changed
+
+- Rollback to previous gateway binaries. (thomasddn/qbusmqtt#2 / thomasddn/qbusmqtt#3)
+
 
 ## 0.3.0 - 2024-06-21
 
