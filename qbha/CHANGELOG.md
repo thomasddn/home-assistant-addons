@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.1 - 2024-12-05
+
+### Added
+
+- Support for tilting covers (thomasddn/qbha#10)
+
+
 ## 0.8.0 - 2024-09-29
 
 ### Added
