@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.0.0 - 2024-12-20
+
+v1.0.0 – Finally, the Big 1.0! 🎉
+
+It's time to declare this add-on stable and ready for prime time. Thanks to everyone who contributed along the way! 🙌
+
+### Added
+
+- Support for variantless gauges
+
+
 ## 0.8.1 - 2024-12-05
 
 ### Added
