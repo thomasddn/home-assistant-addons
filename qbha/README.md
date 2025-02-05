@@ -1,4 +1,10 @@
 # QBHA
+
+> [!IMPORTANT]
+> Qbus now has an [official integration](https://www.home-assistant.io/integrations/qbus) starting with Home Assistant 2025.2.0, which I helped develop. As new features continue to be added, **QBHA** will be phased out and eventually deprecated.
+>
+> However, the Qbus MQTT gateway, for which you can use the [qbusmqtt](../qbusmqtt/) add-on, is still required.
+
 QBHA stands for Qbus Bridge for Home Assistant and can be pronounced as "cuba". QBHA will create MQTT topics for Home Assistant based on your Qbus configuration, making all supported entities available in Home Assistant.
 
 It is also available as a Docker image: https://github.com/thomasddn/qbha.
