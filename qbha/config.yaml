@@ -1,6 +1,7 @@
 name: QBHA
 description: Qbus bridge for Home Assistant
-version: 1.0.0
+version: 1.0.1
+stage: deprecated
 image: thomasddn/home-assistant-addon-qbha-{arch}
 slug: qbha
 codenotary: 11554546+thomasddn@users.noreply.github.com

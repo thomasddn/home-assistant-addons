@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.1 - 2026-04-10
+
+This app is now deprecated. Please migrate to the core integration: https://www.home-assistant.io/integrations/qbus.
+You still need the qbusmqtt app.
+
+
 ## 1.0.0 - 2024-12-20
 
 v1.0.0 – Finally, the Big 1.0! 🎉
