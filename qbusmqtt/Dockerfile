@@ -1,15 +1,15 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-debian:bookworm
+ARG BUILD_FROM=ghcr.io/home-assistant/base-debian:trixie
 
 FROM $BUILD_FROM
 ARG TARGETARCH
-ARG QBUSMQTT_VERSION=v0.4.0
+ARG QBUSMQTT_VERSION=v0.5.0
 
 # Install requirements
 RUN apt-get clean && \
     apt-get update && \
     apt-get upgrade -y && \
     apt-get install libc6 libdbus-1-3 libstdc++6 -y && \
-    apt-get install tftp git unzip arp-scan net-tools telnet -y
+    apt-get install tftp-hpa git unzip arp-scan net-tools telnet -y
 
 # Copy run.sh
 COPY run.sh /
@@ -17,9 +17,8 @@ RUN chmod a+x /run.sh
 
 # Setup app
 RUN case "${TARGETARCH:-amd64}" in \
-        arm|armv7|armhf) ARCH_MAP="arm" ;; \
         amd64) ARCH_MAP="x64" ;; \
-        386|i386) ARCH_MAP="x86" ;; \
+        arm64) ARCH_MAP="arm64" ;; \
         *) echo "Unsupported architecture: ${TARGETARCH}" && exit 1 ;; \
         esac && \
     git clone https://github.com/thomasddn/qbusmqtt /qbusmqtt && \

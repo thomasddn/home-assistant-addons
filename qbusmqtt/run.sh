@@ -27,4 +27,12 @@ fi
 
 bashio::log.info "Starting Qbus MQTT gateway."
 bashio::log.info "Connecting to MQTT broker '$MQTT_HOST:$MQTT_PORT' with user '$MQTT_USER'."
-/opt/qbusmqttgw/qbusMqttGw -serial QBUSMQTTGW -logbuflevel -1 -logtostderr true -storagedir /opt/qbusmqttgw -log_dir /var/log/qbusmqttgw -mqttbroker "tcp://$MQTT_HOST:$MQTT_PORT" -mqttuser "$MQTT_USER" -mqttpassword "$MQTT_PWD"
+/opt/qbusmqttgw/qbusMqttGw \
+    -serial QBUSMQTTGW \
+    -logbuflevel -1 \
+    -logtostderr true \
+    -storagedir /config \
+    -log_dir /var/log/qbusmqttgw \
+    -mqttbroker "tcp://$MQTT_HOST:$MQTT_PORT" \
+    -mqttuser "$MQTT_USER" \
+    -mqttpassword "$MQTT_PWD"
