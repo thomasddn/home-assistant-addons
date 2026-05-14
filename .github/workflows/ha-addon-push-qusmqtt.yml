@@ -3,26 +3,89 @@ name: HA Addon - Push qbusmqtt
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
-  build:
-    name: Push
+  init:
+    name: Initialize build
     runs-on: ubuntu-latest
+    outputs:
+      architectures: ${{ steps.info.outputs.architectures }}
+      matrix: ${{ steps.matrix.outputs.matrix }}
+      image_name: ${{ steps.normalize.outputs.image_name }}
+      registry_prefix: ${{ steps.normalize.outputs.registry_prefix }}
+      version: ${{ steps.info.outputs.version }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.1.1
-        
-      - name: Docker Login
-        # uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
-        uses: docker/login-action@v3.2.0
+        uses: actions/checkout@v6.0.2
+
+      - name: Get app information
+        id: info
+        uses: home-assistant/actions/helpers/info@master
         with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_TOKEN }}
-          
-      - name: Push qbusmqtt
-        # uses: home-assistant/builder@cebacc797363e17696b5649799bdaadd7b7f5d70
-        uses: home-assistant/builder@2024.03.5
+          path: "./qbusmqtt"
+
+      - name: Normalize app information
+        id: normalize
+        run: |
+          image=${{ steps.info.outputs.image }}
+          echo "image_name=${image##*/}" >> "$GITHUB_OUTPUT"
+          echo "registry_prefix=docker.io/${image%/*}" >> "$GITHUB_OUTPUT"
+
+      - name: Prepare build matrix
+        id: matrix
+        uses: home-assistant/builder/actions/prepare-multi-arch-matrix@2026.03.2
         with:
-          args: |
-            --all \
-            --target qbusmqtt \
-            --docker-hub ${{ secrets.DOCKER_USERNAME }}
+          architectures: ${{ steps.info.outputs.architectures }}
+          image-name: ${{ steps.normalize.outputs.image_name }}
+          registry-prefix: ${{ steps.normalize.outputs.registry_prefix }}
+
+  build:
+    name: Build ${{ matrix.arch }} image
+    needs: init
+    runs-on: ${{ matrix.os }}
+    permissions:
+      contents: read
+      id-token: write
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.init.outputs.matrix) }}
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Build image
+        uses: home-assistant/builder/actions/build-image@2026.03.2
+        with:
+          arch: ${{ matrix.arch }}
+          container-registry: docker.io
+          container-registry-username: ${{ secrets.DOCKER_USERNAME }}
+          container-registry-password: ${{ secrets.DOCKER_TOKEN }}
+          context: "./qbusmqtt"
+          cosign: "false"
+          image: ${{ matrix.image }}
+          image-tags: |
+            ${{ needs.init.outputs.version }}
+            latest
+          push: "true"
+          version: ${{ needs.init.outputs.version }}
+
+  manifest:
+    name: Publish multi-arch manifest
+    needs: [init, build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Publish multi-arch manifest
+        uses: home-assistant/builder/actions/publish-multi-arch-manifest@2026.03.2
+        with:
+          architectures: ${{ needs.init.outputs.architectures }}
+          container-registry: docker.io
+          container-registry-username: ${{ secrets.DOCKER_USERNAME }}
+          container-registry-password: ${{ secrets.DOCKER_TOKEN }}
+          cosign: "false"
+          image-name: ${{ needs.init.outputs.image_name }}
+          image-tags: |
+            ${{ needs.init.outputs.version }}
+            latest
+          registry-prefix: ${{ needs.init.outputs.registry_prefix }}

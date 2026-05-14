@@ -1,6 +1,4 @@
-ARG BUILD_FROM=ghcr.io/home-assistant/base-debian:trixie
-
-FROM $BUILD_FROM
+FROM ghcr.io/home-assistant/base-debian:trixie
 ARG TARGETARCH
 ARG QBUSMQTT_VERSION=v0.5.0
 
