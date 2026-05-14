@@ -1,32 +1,22 @@
-name: HA Addon - Test
+name: HA Addon - Test qbusmqtt
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Test build
+    name: Test build qbusmqtt
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v3
-        
-      - name: Test build qbha
-        # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
-        uses: home-assistant/builder@2023.09.0
-        with:
-          args: |
-            --test \
-            --all \
-            --target qbha \
-            --docker-hub ${{ secrets.DOCKER_USERNAME }}
-        
+        uses: actions/checkout@v4.1.1
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Test build qbusmqtt
-        # uses: home-assistant/builder@54dcff2fc94a5c8b71abe3a94ea574dc77895554
-        uses: home-assistant/builder@2023.09.0
+        uses: docker/build-push-action@v6
         with:
-          args: |
-            --test \
-            --all \
-            --target qbusmqtt \
-            --docker-hub ${{ secrets.DOCKER_USERNAME }}
+          context: ./qbusmqtt
+          load: true
+          push: false

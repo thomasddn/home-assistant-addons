@@ -1,7 +1,7 @@
 name: Qbus MQTT Gateway
 description: Publishes Qbus states and events to MQTT
 version: 0.5.0
-image: thomasddn/home-assistant-addon-qbusmqtt-{arch}
+image: thomasddn/home-assistant-addon-qbusmqtt
 slug: qbusmqtt
 init: false
 codenotary: 11554546+thomasddn@users.noreply.github.com
