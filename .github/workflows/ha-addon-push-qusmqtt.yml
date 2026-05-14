@@ -3,10 +3,6 @@ name: HA Addon - Push qbusmqtt
 on:
   workflow_dispatch:
 
-env:
-  ARCHITECTURES: '["amd64", "aarch64"]'
-  IMAGE_NAME: home-assistant-addon-qbusmqtt
-
 permissions:
   contents: read
 
@@ -15,11 +11,14 @@ jobs:
     name: Initialize build
     runs-on: ubuntu-latest
     outputs:
+      architectures: ${{ steps.info.outputs.architectures }}
       matrix: ${{ steps.matrix.outputs.matrix }}
+      image_name: ${{ steps.normalize.outputs.image_name }}
+      registry_prefix: ${{ steps.normalize.outputs.registry_prefix }}
       version: ${{ steps.info.outputs.version }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.2
 
       - name: Get app information
         id: info
@@ -27,13 +26,20 @@ jobs:
         with:
           path: "./qbusmqtt"
 
+      - name: Normalize app information
+        id: normalize
+        run: |
+          image=${{ steps.info.outputs.image }}
+          echo "image_name=${image##*/}" >> "$GITHUB_OUTPUT"
+          echo "registry_prefix=docker.io/${image%/*}" >> "$GITHUB_OUTPUT"
+
       - name: Prepare build matrix
         id: matrix
         uses: home-assistant/builder/actions/prepare-multi-arch-matrix@2026.03.2
         with:
-          architectures: ${{ env.ARCHITECTURES }}
-          image-name: ${{ env.IMAGE_NAME }}
-          registry-prefix: docker.io/${{ secrets.DOCKER_USERNAME }}
+          architectures: ${{ steps.info.outputs.architectures }}
+          image-name: ${{ steps.normalize.outputs.image_name }}
+          registry-prefix: ${{ steps.normalize.outputs.registry_prefix }}
 
   build:
     name: Build ${{ matrix.arch }} image
@@ -47,7 +53,7 @@ jobs:
       matrix: ${{ fromJSON(needs.init.outputs.matrix) }}
     steps:
       - name: Checkout the repository
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v6.0.2
 
       - name: Build image
         uses: home-assistant/builder/actions/build-image@2026.03.2
@@ -73,13 +79,13 @@ jobs:
       - name: Publish multi-arch manifest
         uses: home-assistant/builder/actions/publish-multi-arch-manifest@2026.03.2
         with:
-          architectures: ${{ env.ARCHITECTURES }}
+          architectures: ${{ needs.init.outputs.architectures }}
           container-registry: docker.io
           container-registry-username: ${{ secrets.DOCKER_USERNAME }}
           container-registry-password: ${{ secrets.DOCKER_TOKEN }}
           cosign: "false"
-          image-name: ${{ env.IMAGE_NAME }}
+          image-name: ${{ needs.init.outputs.image_name }}
           image-tags: |
             ${{ needs.init.outputs.version }}
             latest
-          registry-prefix: docker.io/${{ secrets.DOCKER_USERNAME }}
+          registry-prefix: ${{ needs.init.outputs.registry_prefix }}
