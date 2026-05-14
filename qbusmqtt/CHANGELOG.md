@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0 - 2026-05-14
+
+- New Qbus binaries adding support for stepper
+
+
 ## 0.5.0 - 2026-04-14
 
 - Use new Qbus binaries which expose more outputs and now also support arm64 (#4)
