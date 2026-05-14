@@ -15,7 +15,7 @@ jobs:
       matrix: ${{ steps.matrix.outputs.matrix }}
       image_name: ${{ steps.normalize.outputs.image_name }}
       registry_prefix: ${{ steps.normalize.outputs.registry_prefix }}
-      version: ${{ steps.info.outputs.version }}
+      version: ${{ steps.normalize.outputs.version }}
     steps:
       - name: Checkout the repository
         uses: actions/checkout@v6.0.2
@@ -29,9 +29,11 @@ jobs:
       - name: Normalize app information
         id: normalize
         run: |
-          image=${{ steps.info.outputs.image }}
+          image=$(echo ${{ steps.info.outputs.image }} | tr -d '"')
+          version=$(echo ${{ steps.info.outputs.version }} | tr -d '"')
           echo "image_name=${image##*/}" >> "$GITHUB_OUTPUT"
           echo "registry_prefix=docker.io/${image%/*}" >> "$GITHUB_OUTPUT"
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
 
       - name: Prepare build matrix
         id: matrix
